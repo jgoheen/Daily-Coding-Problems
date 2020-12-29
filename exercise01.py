@@ -9,14 +9,14 @@ from random import random
 from random import seed
 from random import randint
 
-# generate a random list of numbers under 10 and under length 10 and print it to the screen
+# generate a random list of numbers under 10 and under length 4 and print it to the screen
 a = []
-for i in range(0, 10):
+for i in range(0, 4):
     a.append(randint(0,10))
 print('a = ', a)
 
-#generate a random number below 40
-k = randint(0,40)
+#generate a random number below 20
+k = randint(0,20)
 print('k = ', + k)
 
 for x in range(len(a)):
@@ -26,4 +26,3 @@ for x in range(len(a)):
         if a[x] + a[y] == k:
             print(str(a[x]) + ' + ' + str(a[y]) + ' = ' + str(k))
             print(True)
-            break
