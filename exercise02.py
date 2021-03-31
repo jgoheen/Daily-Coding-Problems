@@ -1,31 +1,49 @@
 '''
+
 Good morning! Here's your coding interview problem for today.
-This problem was recently asked by Google.
-Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
-For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
-Bonus: Can you do this in one pass?
+This problem was asked by Uber.
+Given an array of integers, return a new array such that each element at index i of the new array 
+is the product of all the numbers in the original array except the one at i.
+For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60, 40, 30, 24]. 
+If our input was [3, 2, 1], the expected output would be [2, 3, 6].
+Follow-up: what if you can't use division?
+
 '''
-from random import random
-from random import seed
-from random import randint
 
-# generate a random list of numbers under 10 and under length 4 and print it to the screen
-a = []
-for i in range(0, 4):
-    a.append(randint(0,10))
-print('a = ', a)
+import random
 
-updatedList = []
+'using a list as an array'
+def getIntList(k):
+    intList = []
+    for i in range(k):
+        n = random.randint(1,10)
+        intList.append(n)
+    return(intList)
 
-i = 0
-while i < len(a):
-  tempList=a[:i] + a[i+1:]
-  print('tempList = ', tempList)
-  p=1
-  for n in tempList:
-    p *= n 
-  updatedList.append(p)
-  i = i + 1
-  
-a[1]=20
-print('updatedList = ', updatedList)
+myList = getIntList(5)
+print(myList)
+
+newList = []
+tempListA = []
+tempListB = []
+tempListC = []
+j = 0
+k = 0
+prod = 1
+prodA = 1
+prodB = 1
+
+for i in range(len(myList)):
+    tempListA = myList[:i]
+    tempListB = myList[i+1:]
+    for x in range(len(tempListA)):
+        prodA = prodA * tempListA[x]
+    for x in range(len(tempListB)):
+        prodB = prodB * tempListB[x]
+    prod = prodA * prodB
+    newList.append(prod)
+    prod = 1
+    prodA = 1
+    prodB = 1
+
+print(newList)
