@@ -5,24 +5,26 @@ Given a list of numbers and a number k, return whether any two numbers from the 
 For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
 Bonus: Can you do this in one pass?
 '''
-from random import random
-from random import seed
-from random import randint
+import random
 
-# generate a random list of numbers under 10 and under length 4 and print it to the screen
-a = []
-for i in range(0, 4):
-    a.append(randint(0,10))
-print('a = ', a)
+listLength = 10
+k = random.randint(50,100)
 
-#generate a random number below 20
-k = randint(0,20)
-print('k = ', + k)
+randomList = []
 
-for x in range(len(a)):
-    for y in range(len(a)):
-        if a[x] == a[y]:
-            continue
-        if a[x] + a[y] == k:
-            print(str(a[x]) + ' + ' + str(a[y]) + ' = ' + str(k))
-            print(True)
+for i in range(listLength):
+    n = random.randint(0,100)
+    randomList.append(n)
+
+print("k = ", k)
+print(randomList)
+
+def sum_to_k(l, k):
+    for i in l:
+        for j in l:
+            if ((i != j) and ((i + j) == k)):
+                print("True!")
+                print(i, " + ", j, " = ", k)
+                return True
+
+print(sum_to_k(randomList, k))
